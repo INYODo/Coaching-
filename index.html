@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coaching de Transformación - Belén González | Espacio INYO</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --oro-inyo: #b08d57;
@@ -22,145 +23,94 @@
             background-color: var(--claro);
         }
 
-        /* --- NAVEGACIÓN --- */
-        nav {
-            background: var(--oscuro);
-            color: var(--blanco);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* --- SISTEMA NAVEGACIÓN ECOSISTEMA INYO --- */
+        #menu-toggle { display: none; }
+        .btn-hamburguesa {
+            position: fixed; top: 24px; left: 24px; z-index: 1000;
+            cursor: pointer; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px);
+            padding: 12px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.2);
+            color: white; transition: 0.3s;
         }
-
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: bold; }
-        .menu-hamburguesa { cursor: pointer; font-size: 1.5rem; }
-
-        #nav-links {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 60px;
-            right: 0;
-            background: var(--oscuro);
-            width: 100%;
-            text-align: center;
-            padding: 1rem 0;
+        .btn-hamburguesa:hover { background: var(--oscuro); }
+        
+        #side-menu {
+            position: fixed; top: 0; left: 0; h: 100%; width: 280px; height: 100vh;
+            background: var(--claro); z-index: 1001; shadow: 10px 0 30px rgba(0,0,0,0.1);
+            transform: translateX(-100%); transition: 0.4s ease-in-out;
+            padding: 40px; border-right: 1px solid #ddd;
         }
-
-        #nav-links.active { display: flex; }
-
-        #nav-links a {
-            color: var(--blanco);
-            text-decoration: none;
-            padding: 1rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            border-bottom: 1px solid #333;
+        #menu-toggle:checked ~ #side-menu { transform: translateX(0); }
+        #menu-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.5); 
+            z-index: 1000; display: none; backdrop-filter: blur(2px);
         }
+        #menu-toggle:checked ~ #menu-overlay { display: block; }
+
+        .side-menu-content p { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #999; margin-bottom: 30px; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .side-menu-links { list-style: none; }
+        .side-menu-links li { margin-bottom: 25px; }
+        .side-menu-links a { text-decoration: none; color: var(--oscuro); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-style: italic; }
+        .side-menu-links a:hover { color: var(--oro-inyo); }
 
         /* --- HERO --- */
         .hero {
             height: 50vh;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80') center/cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: var(--blanco);
-            text-align: center;
-            padding-top: 60px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: var(--blanco); text-align: center;
         }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; }
 
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 0.5rem; }
-
-        /* --- CONTENIDO PRINCIPAL --- */
+        /* --- CONTENIDO --- */
         .container { padding: 4rem 10%; text-align: center; }
-        
-        .metodologia { background: #fff; padding: 3rem; border-radius: 8px; margin-bottom: 3rem; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
-        .metodologia h2 { color: var(--oro-inyo); margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; font-size: 2rem; }
+        .metodologia { background: #fff; padding: 3rem; border-radius: 8px; margin-bottom: 3rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .metodologia h2 { color: var(--oro-inyo); margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; }
 
-        /* --- PRECIOS --- */
-        .grid-precios {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0 4rem 0;
-        }
-
-        .card {
-            background: var(--blanco);
-            padding: 2.5rem;
-            border-top: 4px solid var(--oro-inyo);
-            border-radius: 4px;
-            transition: transform 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-
+        .grid-precios { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .card { background: var(--blanco); padding: 2.5rem; border-top: 4px solid var(--oro-inyo); border-radius: 4px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
         .card:hover { transform: translateY(-10px); }
         .price { font-size: 2.2rem; font-weight: bold; color: var(--oro-inyo); margin: 1rem 0; }
-        .desc-cuota { font-size: 0.85rem; color: #666; margin-bottom: 1.5rem; min-height: 60px; }
         
-        .btn-reserva {
-            display: inline-block;
-            background: var(--oscuro);
-            color: var(--blanco);
-            padding: 0.9rem 1.8rem;
-            text-decoration: none;
-            border-radius: 2px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
+        .btn-reserva { display: inline-block; background: var(--oscuro); color: var(--blanco); padding: 0.9rem 1.8rem; text-decoration: none; font-size: 0.8rem; font-weight: bold; }
 
-        /* --- SOBRE BELÉN (AL FINAL) --- */
+        /* --- PERFIL BELÉN --- */
         .perfil-section { background: var(--blanco); padding: 5rem 10%; border-top: 1px solid #eee; }
-        .perfil-container {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 3rem;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .foto-belen {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 8px solid var(--claro);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
+        .perfil-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 3rem; max-width: 1100px; margin: 0 auto; }
+        .foto-belen { width: 280px; height: 280px; border-radius: 50%; object-fit: cover; border: 8px solid var(--claro); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .texto-belen { flex: 1; min-width: 300px; text-align: left; }
-        .texto-belen h2 { font-family: 'Playfair Display', serif; color: var(--oro-inyo); margin-bottom: 1rem; font-size: 1.8rem; }
-        .texto-belen p { font-style: italic; color: #444; font-size: 1.05rem; line-height: 1.8; }
+        .texto-belen h2 { font-family: 'Playfair Display', serif; color: var(--oro-inyo); margin-bottom: 1rem; }
+        .texto-belen p { font-style: italic; color: #444; }
 
-        /* --- FOOTER --- */
-        footer { background: var(--oscuro); color: var(--blanco); padding: 3rem 10%; text-align: center; }
-        .footer-links { margin: 1.5rem 0; }
-        .footer-links a { color: var(--claro); margin: 0 10px; text-decoration: none; font-size: 0.8rem; }
+        /* --- FOOTER ECOSISTEMA --- */
+        footer { background: var(--blanco); color: var(--oscuro); padding: 4rem 10%; text-align: center; border-top: 1px solid #eee; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: bold; margin-bottom: 40px; font-style: italic; }
+        .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+        .footer-nav a { text-decoration: none; color: var(--oscuro); border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        .footer-nav a:hover { color: var(--oro-inyo); border-color: var(--oro-inyo); }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">ESPACIO INYO</div>
-        <div class="menu-hamburguesa" onclick="toggleMenu()">☰</div>
-        <div id="nav-links">
-            <a href="#">Inicio</a>
-            <a href="#">HIIT & Calistenia</a>
-            <a href="#">Zen Stretching</a>
-            <a href="#">Kiryū Dōjō</a>
-            <a href="#">Yoga</a>
-            <a href="#">Qigong</a>
-            <a href="#">Chamanismo</a>
-            <a href="#" style="color: var(--oro-inyo);">Coaching (Be)</a>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="btn-hamburguesa">
+        <i class="fas fa-bars"></i>
+    </label>
+    <label id="menu-overlay" for="menu-toggle"></label>
+
+    <nav id="side-menu">
+        <label for="menu-toggle" style="position:absolute; top:20px; right:20px; cursor:pointer; color:#ccc;"><i class="fas fa-times"></i></label>
+        <div class="side-menu-content">
+            <p>Espacio INYO ☯️</p>
+            <ul class="side-menu-links">
+                <li><a href="https://inyodo.github.io/espacio-inyo-web/">Masaje Japonés</a></li>
+                <li><a href="https://inyodo.github.io/hiit-calistenia/">HIIT Calistenia</a></li>
+                <li><a href="https://inyodo.github.io/espacio-inyo-web/yoga.html">Clases de Yoga</a></li>
+                <li><a href="#" style="color:var(--oro-inyo); text-decoration: underline;">Coaching Online</a></li>
+                <li><a href="https://inyodo.github.io/espacio-inyo-web/zen-stretching.html">Zen Stretching</a></li>
+                <li><a href="https://inyodo.github.io/chamanismo/">Chamanismo</a></li>
+                <li><a href="https://inyodo.github.io/Qigong/">Qigong (Salud)</a></li>
+                <li><a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html">Artes Marciales</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -172,32 +122,31 @@
     <main class="container">
         <section class="metodologia">
             <h2>Metodología de Acompañamiento</h2>
-            <p>Un proceso integral diseñado para alinear tu mente, cuerpo y alma. Utilizamos herramientas de Autoconocimiento, Mindfulness, Yoga, PNL, Ho'ponopono y Gemoterapia adaptadas a tu necesidad específica.</p>
+            <p>Un proceso integral diseñado para alinear tu mente, cuerpo y alma. Utilizamos herramientas de Autoconocimiento, Mindfulness, Yoga, PNL, Ho'ponopono y Gemoterapia.</p>
             <br>
             <p><strong>Modalidad:</strong> 100% Online | <strong>Sesiones:</strong> 1 hora | <strong>Horario:</strong> A convenir</p>
         </section>
 
-        <h2>Nuestras Sesiones</h2>
         <div class="grid-precios">
             <div class="card">
                 <h3>1 Sesión Individual</h3>
                 <div class="price">$35.000</div>
-                <p class="desc-cuota">Ideal para consultas específicas y claridad inmediata sobre un tema puntual.</p>
-                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20las%20sesiones%20de%20coaching%20de%20transformación" class="btn-reserva">RESERVAR AHORA</a>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.5rem;">Ideal para consultas específicas y claridad inmediata.</p>
+                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%201%20sesión" class="btn-reserva">RESERVAR AHORA</a>
             </div>
 
-            <div class="card" style="background-color: #fdfaf6; border-color: var(--oscuro);">
+            <div class="card" style="background-color: #fdfaf6;">
                 <h3>Proceso (3 Sesiones)</h3>
                 <div class="price">$90.000</div>
-                <p class="desc-cuota">Recomendado para tratar un tema con seguimiento. Una sesión cada 15 días aprox.</p>
-                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20el%20pack%20de%203%20sesiones" class="btn-reserva">RESERVAR PACK</a>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.5rem;">Recomendado para tratar un tema con seguimiento quincenal.</p>
+                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20el%20pack%20de%203" class="btn-reserva">RESERVAR PACK</a>
             </div>
 
             <div class="card">
                 <h3>Transformación (5 Sesiones)</h3>
                 <div class="price">$130.000</div>
-                <p class="desc-cuota">Recomendada para trabajar a fondo y generar un cambio real y duradero en tu vida.</p>
-                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20el%20proceso%20de%205%20sesiones" class="btn-reserva">RESERVAR PROCESO</a>
+                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.5rem;">Para trabajar a fondo y generar un cambio real y duradero.</p>
+                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20el%20proceso%20de%205" class="btn-reserva">RESERVAR PROCESO</a>
             </div>
         </div>
     </main>
@@ -215,18 +164,19 @@
     </section>
 
     <footer>
-        <p><strong>ESPACIO INYO</strong> - Carlos Tejedor 335, Lanús Oeste Centro</p>
-        <div class="footer-links">
-            <a href="#">HIIT</a> | <a href="#">Yoga</a> | <a href="#">Qigong</a> | <a href="#">Chamanismo</a> | <a href="#">Coaching</a>
+        <div class="footer-logo">Espacio INYO ☯️</div>
+        <div class="footer-nav">
+            <a href="https://inyodo.github.io/espacio-inyo-web/">Masaje Japonés</a>
+            <a href="https://inyodo.github.io/hiit-calistenia/">HIIT Calistenia</a>
+            <a href="https://inyodo.github.io/espacio-inyo-web/yoga.html">Clases de Yoga</a>
+            <a href="#">Coaching Online</a>
+            <a href="https://inyodo.github.io/espacio-inyo-web/zen-stretching.html">Zen Stretching</a>
+            <a href="https://inyodo.github.io/chamanismo/">Chamanismo</a>
+            <a href="https://inyodo.github.io/Qigong/">Qigong (Salud)</a>
+            <a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html">Artes Marciales</a>
         </div>
-        <p>© 2026 Espacio INYO - Belén González</p>
+        <p style="margin-top: 40px; font-size: 10px; color: #999;">© 2026 Espacio INYO - Carlos Tejedor 335, Lanús Oeste Centro</p>
     </footer>
 
-    <script>
-        function toggleMenu() {
-            const links = document.getElementById('nav-links');
-            links.classList.toggle('active');
-        }
-    </script>
 </body>
 </html>
