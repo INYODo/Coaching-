@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaching de Transformación - Belén González | Espacio INYO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --oro-inyo: #b08d57;
+            --oscuro: #1a1a1a;
+            --claro: #f4f4f4;
+            --blanco: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--oscuro);
+            background-color: var(--claro);
+        }
+
+        /* --- NAVEGACIÓN --- */
+        nav {
+            background: var(--oscuro);
+            color: var(--blanco);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: bold; }
+
+        .menu-hamburguesa { cursor: pointer; font-size: 1.5rem; }
+
+        #nav-links {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background: var(--oscuro);
+            width: 100%;
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        #nav-links.active { display: flex; }
+
+        #nav-links a {
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid #333;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            height: 50vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--blanco);
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; }
+
+        /* --- SOBRE BELÉN (NUEVA SECCIÓN) --- */
+        .perfil-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            padding: 4rem 10%;
+            background: var(--blanco);
+        }
+
+        .foto-belen {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--claro);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .texto-belen { flex: 1; min-width: 300px; text-align: left; }
+        .texto-belen h2 { font-family: 'Playfair Display', serif; color: var(--oro-inyo); margin-bottom: 1rem; }
+        .texto-belen p { font-style: italic; color: #555; font-size: 1.1rem; }
+
+        /* --- CONTENIDO --- */
+        .container { padding: 4rem 10%; text-align: center; }
+        
+        .metodologia { background: #fff; padding: 3rem; border-radius: 8px; margin-bottom: 3rem; border: 1px solid #eee; }
+        .metodologia h2 { color: var(--oro-inyo); margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; }
+
+        /* --- PRECIOS --- */
+        .grid-precios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--blanco);
+            padding: 2.5rem;
+            border-top: 4px solid var(--oro-inyo);
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+        .price { font-size: 2rem; font-weight: bold; color: var(--oro-inyo); margin: 1rem 0; }
+        .desc-cuota { font-size: 0.85rem; color: #666; margin-bottom: 1.5rem; min-height: 60px; }
+        
+        .btn-reserva {
+            display: inline-block;
+            background: var(--oscuro);
+            color: var(--blanco);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 2px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: var(--oscuro); color: var(--blanco); padding: 3rem 10%; text-align: center; }
+        .footer-links { margin: 1.5rem 0; }
+        .footer-links a { color: var(--claro); margin: 0 10px; text-decoration: none; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ESPACIO INYO</div>
+        <div class="menu-hamburguesa" onclick="toggleMenu()">☰</div>
+        <div id="nav-links">
+            <a href="#">Inicio</a>
+            <a href="#">HIIT & Calistenia</a>
+            <a href="#">Zen Stretching</a>
+            <a href="#">Kiryū Dōjō</a>
+            <a href="#">Yoga</a>
+            <a href="#">Qigong</a>
+            <a href="#">Chamanismo</a>
+            <a href="#" style="color: var(--oro-inyo);">Coaching (Be)</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Coaching de Transformación</h1>
+        <p>Alinear mente, cuerpo y alma</p>
+    </header>
+
+    <section class="perfil-container">
+        <img src="https://lh3.googleusercontent.com/d/1_H5lQO2K_nB_jG4fV7T6_z2G5S-C4_Xm" alt="Belén González" class="foto-belen">
+        <div class="texto-belen">
+            <h2>Soy Be.</h2>
+            <p>Un simple ser que transita, a través de la filosofía yóguica, esta vida. Y que desde un humilde lugar y con un toque personal, comparte esta mirada de sabiduría a otros seres que les interese un camino de plena conexión, real y saludable. Alineando la mente, el cuerpo y el alma, y expandiendo amor puro desde la profundidad de cada ser para así, alcanzar la unidad.</p>
+            <br>
+            <p>Entiendo que es un camino muy largo y decido avanzar disfrutando paso a paso. ¡Invito a tu ser a probarlo también!</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="metodologia">
+            <h2>Metodología de Transformación</h2>
+            <p>Acompañamiento integral utilizando Autoconocimiento, Mindfulness, Yoga, PNL, Ho'ponopono, Ley de atracción y Gemoterapia.</p>
+            <br>
+            <p><strong>Modalidad:</strong> Online | <strong>Duración:</strong> 1 hora | <strong>Horario:</strong> A convenir</p>
+        </section>
+
+        <h2>Sesiones y Procesos</h2>
+        <div class="grid-precios">
+            <div class="card">
+                <h3>1 Sesión Individual</h3>
+                <div class="price">$35.000</div>
+                <p class="desc-cuota">Para consultas específicas sin seguimiento prolongado.</p>
+                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20las%20sesiones%20de%20coaching%20de%20transformación" class="btn-reserva">RESERVAR AHORA</a>
+            </div>
+
+            <div class="card" style="background-color: #fdfaf6;">
+                <h3>Proceso (3 Sesiones)</h3>
+                <div class="price">$90.000</div>
+                <p class="desc-cuota">Recomendado para tratar un tema puntual (1 sesión cada 15 días).</p>
+                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20el%20pack%20de%203%20sesiones" class="btn-reserva">RESERVAR PACK</a>
+            </div>
+
+            <div class="card">
+                <h3>Transformación (5 Sesiones)</h3>
+                <div class="price">$130.000</div>
+                <p class="desc-cuota">Para trabajar en profundidad varios temas o metas complejas.</p>
+                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20el%20proceso%20de%205%20sesiones" class="btn-reserva">RESERVAR PROCESO</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p><strong>ESPACIO INYO</strong> - Carlos Tejedor 335, Lanús Oeste Centro</p>
+        <div class="footer-links">
+            <a href="#">HIIT</a> | <a href="#">Yoga</a> | <a href="#">Qigong</a> | <a href="#">Chamanismo</a> | <a href="#">Coaching</a>
+        </div>
+        <p>© 2026 Espacio INYO - Belén González</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const links = document.getElementById('nav-links');
+            links.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
