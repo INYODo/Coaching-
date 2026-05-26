@@ -49,7 +49,7 @@
         }
         #menu-toggle:checked ~ #menu-overlay { display: block; }
 
-        .side-menu-content p { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #a8a29e; margin-bottom: 30px; text-align: center; border-bottom: 1px solid #eae6e1; padding-bottom: 15px; font-weight: 700; italic; }
+        .side-menu-content p { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #a8a29e; margin-bottom: 30px; text-align: center; border-bottom: 1px solid #eae6e1; padding-bottom: 15px; font-weight: 700; font-style: italic; }
         .side-menu-links { list-style: none; }
         .side-menu-links li { margin-bottom: 22px; }
         .side-menu-links a { text-decoration: none; color: var(--oscuro); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; font-style: italic; transition: color 0.3s; }
@@ -57,62 +57,71 @@
 
         /* --- HERO --- */
         .hero {
-            height: 65vh;
+            min-height: 60vh;
             background: linear-gradient(rgba(253, 251, 249, 0.75), rgba(253, 251, 249, 0.92)), url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1470&q=80') center/cover fixed;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            padding: 0 2rem; border-b: 1px solid #eae6e1;
+            padding: 2rem 24px; text-align: center; border-bottom: 1px solid #eae6e1;
         }
         .hero p.subtitle-top { font-size: 11px; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; color: var(--oro-inyo); margin-bottom: 1rem; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: var(--oscuro); tracking-tight; font-weight: 400; text-transform: uppercase; }
-        .hero p.tagline { font-style: italic; font-size: 1.2rem; color: var(--stone-600); margin-top: 0.5rem; }
-        .hero-divider { w-16 h-px bg-stone-300 my-6 }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--oscuro); tracking-tight; font-weight: 400; text-transform: uppercase; line-height: 1.2; }
+        .hero p.tagline { font-style: italic; font-size: 1.1rem; color: var(--stone-600); margin-top: 0.5rem; }
 
-        /* --- CONTENIDO --- */
-        .container { max-w-4xl mx-auto padding: 5rem 10%; text-align: center; }
+        /* MODIFICACIÓN QUIRÚRGICA: CONTENEDORES RESPONSIVE FLUIDOS */
+        .container { max-w: 800px; margin: 0 auto; padding: 4rem 24px; text-align: center; width: 100%; overflow: hidden; }
         
-        /* MANIFESTO SECTION */
-        .manifesto { text-align: left; max-width: 720px; margin: 0 auto 5rem auto; }
-        .manifesto h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; color: var(--oscuro); margin-bottom: 2rem; text-align: center; font-style: italic; }
-        .manifesto p { margin-bottom: 1.5rem; font-size: 1.05rem; color: #444; font-weight: 300; }
+        /* MANIFESTO SECTION MÓVIL BLINDADO */
+        .manifesto { text-align: left; width: 100%; margin: 0 auto 4rem auto; }
+        .manifesto h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; color: var(--oscuro); margin-bottom: 2rem; text-align: center; font-style: italic; line-height: 1.3; }
+        .manifesto p { margin-bottom: 1.5rem; font-size: 1rem; color: #444; font-weight: 300; word-wrap: break-word; }
         .manifesto p strong { font-weight: 600; color: var(--oscuro); }
-        .highlight-box { background: #fff; border-left: 3px solid var(--oro-inyo); padding: 2rem; margin: 2.5rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.01); font-style: italic; }
+        
+        .highlight-box { background: #fff; border-left: 3px solid var(--oro-inyo); padding: 1.5rem; margin: 2rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.01); font-style: italic; word-wrap: break-word; }
 
-        /* METODOLOGIA ACCORDION STYLE */
-        .metodologia { background: #fff; padding: 4rem 3rem; border: 1px solid #eae6e1; margin-bottom: 5rem; text-align: left; }
-        .metodologia h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--oscuro); margin-bottom: 1.5rem; font-weight: 400; border-b: 1px solid #eee; padding-bottom: 10px; }
+        /* METODOLOGIA ADAPTATIVA */
+        .metodologia { background: #fff; padding: 2.5rem 1.5rem; border: 1px solid #eae6e1; margin-bottom: 4rem; text-align: left; width: 100%; }
+        .metodologia h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--oscuro); margin-bottom: 1.5rem; font-weight: 400; border-b: 1px solid #eee; padding-bottom: 10px; }
         .metodologia ul { list-style: none; margin-bottom: 2rem; }
-        .metodologia ul li { margin-bottom: 1.2rem; font-size: 0.95rem; color: var(--stone-600); padding-left: 1.5rem; position: relative; }
+        .metodologia ul li { margin-bottom: 1.2rem; font-size: 0.95rem; color: var(--stone-600); padding-left: 1.5rem; position: relative; word-wrap: break-word; }
         .metodologia ul li::before { content: "—"; position: absolute; left: 0; color: var(--oro-inyo); font-weight: bold; }
         
-        .meta-info { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--oro-inyo); background: #fdfaf6; padding: 1rem; border: 1px dashed #eae6e1; text-align: center; }
+        .meta-info { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; color: var(--oro-inyo); background: #fdfaf6; padding: 1.2rem 1rem; border: 1px dashed #eae6e1; text-align: center; line-height: 1.5; }
 
-        /* --- PRECIOS --- */
-        .section-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 400; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 1px; }
-        .grid-precios { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-bottom: 6rem; }
-        .card { background: var(--blanco); padding: 3rem 2rem; border-top: 3px solid var(--oscuro); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; }
+        /* --- PRECIOS ADAPTATIVOS --- */
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 1px; }
+        .grid-precios { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 5rem; width: 100%; }
+        .card { background: var(--blanco); padding: 2.5rem 1.5rem; border-top: 3px solid var(--oscuro); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; }
         .card:hover { transform: translateY(-8px); border-top-color: var(--oro-inyo); box-shadow: 0 20px 40px rgba(176,141,87,0.08); }
-        .card h4 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--oscuro); margin-bottom: 0.5rem; }
-        .price { font-size: 2.4rem; font-weight: 300; color: var(--oro-inyo); margin: 1.5rem 0; font-family: 'Playfair Display', serif; }
+        .card h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; color: var(--oscuro); margin-bottom: 0.5rem; }
+        .price { font-size: 2.2rem; font-weight: 300; color: var(--oro-inyo); margin: 1.2rem 0; font-family: 'Playfair Display', serif; }
         .card-desc { font-size: 0.85rem; color: #777; margin-bottom: 2rem; font-style: italic; min-height: 50px; }
         
-        .btn-reserva { display: block; background: var(--oscuro); color: var(--blanco); padding: 1.2rem; text-decoration: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s; text-transform: uppercase; }
+        .btn-reserva { display: block; background: var(--oscuro); color: var(--blanco); padding: 1.2rem 1rem; text-decoration: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; transition: 0.3s; text-transform: uppercase; text-align: center; }
         .btn-reserva:hover { background: var(--oro-inyo); }
         .card.featured { background: #fdfaf6; border-top-color: var(--oro-inyo); }
 
-        /* --- PERFIL BELÉN --- */
-        .perfil-section { background: var(--blanco); padding: 6rem 10%; border-top: 1px solid #eae6e1; border-b: 1px solid #eae6e1; }
-        .perfil-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4rem; max-width: 1000px; margin: 0 auto; }
-        .foto-belen { width: 260px; height: 260px; border-radius: 50%; object-fit: cover; border: 6px solid var(--claro); box-shadow: 0 15px 35px rgba(0,0,0,0.04); grayscale: 20%; }
-        .texto-belen { flex: 1; min-width: 300px; text-align: left; }
-        .texto-belen h2 { font-family: 'Playfair Display', serif; color: var(--oscuro); font-size: 2rem; margin-bottom: 1.5rem; font-weight: 400; }
+        /* --- PERFIL BELÉN RESPONSIVE --- */
+        .perfil-section { background: var(--blanco); padding: 5rem 24px; border-top: 1px solid #eae6e1; border-b: 1px solid #eae6e1; width: 100%; }
+        .perfil-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 3rem; max-width: 1000px; margin: 0 auto; }
+        .foto-belen { width: 220px; height: 220px; border-radius: 50%; object-fit: cover; border: 6px solid var(--claro); box-shadow: 0 15px 35px rgba(0,0,0,0.04); }
+        .texto-belen { flex: 1; min-width: 260px; text-align: left; }
+        .texto-belen h2 { font-family: 'Playfair Display', serif; color: var(--oscuro); font-size: 1.8rem; margin-bottom: 1.5rem; font-weight: 400; }
         .texto-belen p { font-style: italic; color: #555; font-size: 0.95rem; margin-bottom: 1rem; }
 
-        /* --- FOOTER ECOSISTEMA --- */
-        footer { background: var(--blanco); color: var(--oscuro); padding: 5rem 10%; text-align: center; }
-        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 45px; font-style: italic; text-transform: uppercase; letter-spacing: 2px; }
-        .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: x-12 gap-y-6 font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; max-width: 900px; margin: 0 auto; font-style: italic; }
+        /* --- FOOTER RESPONSIVE --- */
+        footer { background: var(--blanco); color: var(--oscuro); padding: 5rem 24px; text-align: center; width: 100%; overflow: hidden; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 40px; font-style: italic; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; max-width: 900px; margin: 0 auto; font-style: italic; }
         .footer-nav a { text-decoration: none; color: var(--oscuro); border-bottom: 1px solid #e2e0dc; padding-bottom: 6px; transition: all 0.3s; }
         .footer-nav a:hover { color: var(--oro-inyo); border-color: var(--oro-inyo); }
+
+        /* MEDIA QUERIES GENERALES PARA AJUSTES FINOS */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p.tagline { font-size: 1rem; }
+            .manifesto h2 { font-size: 1.5rem; }
+            .perfil-container { text-align: center; }
+            .texto-belen { text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -212,7 +221,7 @@
             </div>
         </div>
 
-        <p style="font-size: 0.9rem; color: var(--stone-600); font-style: italic; max-width: 650px; margin: 0 auto 4rem auto;">
+        <p style="font-size: 0.9rem; color: var(--stone-600); font-style: italic; max-width: 650px; margin: 0 auto 4rem auto; padding: 0 10px;">
             Esto no es terapia tradicional, tampoco un curso grabado que queda a medias. Es acompañamiento real, ético y personalizado. Camino con vos hasta que sientas que podés sostenerlo sola.
         </p>
         
