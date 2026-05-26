@@ -1,92 +1,117 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coaching de Transformación - Belén González | Espacio INYO</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
             --oro-inyo: #b08d57;
             --oscuro: #1a1a1a;
-            --claro: #f4f4f4;
+            --claro: #fdfbf9;
             --blanco: #ffffff;
+            --stone-600: #57534e;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
+            line-height: 1.8;
             color: var(--oscuro);
             background-color: var(--claro);
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- SISTEMA NAVEGACIÓN ECOSISTEMA INYO --- */
+        /* --- NAVEGACIÓN ECOSISTEMA INYO --- */
         #menu-toggle { display: none; }
         .btn-hamburguesa {
             position: fixed; top: 24px; left: 24px; z-index: 1000;
-            cursor: pointer; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px);
-            padding: 12px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.2);
-            color: white; transition: 0.3s;
+            cursor: pointer; background: rgba(26, 26, 26, 0.1); backdrop-filter: blur(8px);
+            padding: 14px; border-radius: 2px; border: 1px solid rgba(26,26,26,0.1);
+            color: var(--oscuro); transition: 0.3s all ease;
         }
-        .btn-hamburguesa:hover { background: var(--oscuro); }
+        .btn-hamburguesa:hover { background: var(--oscuro); color: white; }
         
         #side-menu {
-            position: fixed; top: 0; left: 0; width: 280px; height: 100vh;
+            position: fixed; top: 0; left: 0; width: 290px; height: 100vh;
             background: var(--claro); z-index: 1001; 
-            box-shadow: 10px 0 30px rgba(0,0,0,0.1);
-            transform: translateX(-100%); transition: 0.4s ease-in-out;
-            padding: 40px; border-right: 1px solid #ddd;
+            box-shadow: 15px 0 40px rgba(0,0,0,0.05);
+            transform: translateX(-100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 45px; border-right: 1px solid #eae6e1;
         }
         #menu-toggle:checked ~ #side-menu { transform: translateX(0); }
         #menu-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.5); 
-            z-index: 1000; display: none; backdrop-filter: blur(2px);
+            position: fixed; inset: 0; background: rgba(26,26,26,0.3); 
+            z-index: 1000; display: none; backdrop-filter: blur(4px);
         }
         #menu-toggle:checked ~ #menu-overlay { display: block; }
 
-        .side-menu-content p { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #999; margin-bottom: 30px; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .side-menu-content p { font-size: 10px; text-transform: uppercase; letter-spacing: 3px; color: #a8a29e; margin-bottom: 30px; text-align: center; border-bottom: 1px solid #eae6e1; padding-bottom: 15px; font-weight: 700; italic; }
         .side-menu-links { list-style: none; }
-        .side-menu-links li { margin-bottom: 25px; }
-        .side-menu-links a { text-decoration: none; color: var(--oscuro); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-style: italic; }
+        .side-menu-links li { margin-bottom: 22px; }
+        .side-menu-links a { text-decoration: none; color: var(--oscuro); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; font-style: italic; transition: color 0.3s; }
         .side-menu-links a:hover { color: var(--oro-inyo); }
 
         /* --- HERO --- */
         .hero {
-            height: 50vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80') center/cover;
+            height: 65vh;
+            background: linear-gradient(rgba(253, 251, 249, 0.75), rgba(253, 251, 249, 0.92)), url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1470&q=80') center/cover fixed;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            color: var(--blanco); text-align: center;
+            padding: 0 2rem; border-b: 1px solid #eae6e1;
         }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; }
+        .hero p.subtitle-top { font-size: 11px; text-transform: uppercase; letter-spacing: 5px; font-weight: 700; color: var(--oro-inyo); margin-bottom: 1rem; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; color: var(--oscuro); tracking-tight; font-weight: 400; text-transform: uppercase; }
+        .hero p.tagline { font-style: italic; font-size: 1.2rem; color: var(--stone-600); margin-top: 0.5rem; }
+        .hero-divider { w-16 h-px bg-stone-300 my-6 }
 
         /* --- CONTENIDO --- */
-        .container { padding: 4rem 10%; text-align: center; }
-        .metodologia { background: #fff; padding: 3rem; border-radius: 8px; margin-bottom: 3rem; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
-        .metodologia h2 { color: var(--oro-inyo); margin-bottom: 1.5rem; font-family: 'Playfair Display', serif; }
-
-        .grid-precios { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
-        .card { background: var(--blanco); padding: 2.5rem; border-top: 4px solid var(--oro-inyo); border-radius: 4px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .card:hover { transform: translateY(-10px); }
-        .price { font-size: 2.2rem; font-weight: bold; color: var(--oro-inyo); margin: 1rem 0; }
+        .container { max-w-4xl mx-auto padding: 5rem 10%; text-align: center; }
         
-        .btn-reserva { display: inline-block; background: var(--oscuro); color: var(--blanco); padding: 0.9rem 1.8rem; text-decoration: none; font-size: 0.8rem; font-weight: bold; }
+        /* MANIFESTO SECTION */
+        .manifesto { text-align: left; max-width: 720px; margin: 0 auto 5rem auto; }
+        .manifesto h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; color: var(--oscuro); margin-bottom: 2rem; text-align: center; font-style: italic; }
+        .manifesto p { margin-bottom: 1.5rem; font-size: 1.05rem; color: #444; font-weight: 300; }
+        .manifesto p strong { font-weight: 600; color: var(--oscuro); }
+        .highlight-box { background: #fff; border-left: 3px solid var(--oro-inyo); padding: 2rem; margin: 2.5rem 0; box-shadow: 0 4px 20px rgba(0,0,0,0.01); font-style: italic; }
+
+        /* METODOLOGIA ACCORDION STYLE */
+        .metodologia { background: #fff; padding: 4rem 3rem; border: 1px solid #eae6e1; margin-bottom: 5rem; text-align: left; }
+        .metodologia h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--oscuro); margin-bottom: 1.5rem; font-weight: 400; border-b: 1px solid #eee; padding-bottom: 10px; }
+        .metodologia ul { list-style: none; margin-bottom: 2rem; }
+        .metodologia ul li { margin-bottom: 1.2rem; font-size: 0.95rem; color: var(--stone-600); padding-left: 1.5rem; position: relative; }
+        .metodologia ul li::before { content: "—"; position: absolute; left: 0; color: var(--oro-inyo); font-weight: bold; }
+        
+        .meta-info { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--oro-inyo); background: #fdfaf6; padding: 1rem; border: 1px dashed #eae6e1; text-align: center; }
+
+        /* --- PRECIOS --- */
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 400; margin-bottom: 3rem; text-transform: uppercase; letter-spacing: 1px; }
+        .grid-precios { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-bottom: 6rem; }
+        .card { background: var(--blanco); padding: 3rem 2rem; border-top: 3px solid var(--oscuro); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 30px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; }
+        .card:hover { transform: translateY(-8px); border-top-color: var(--oro-inyo); box-shadow: 0 20px 40px rgba(176,141,87,0.08); }
+        .card h4 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--oscuro); margin-bottom: 0.5rem; }
+        .price { font-size: 2.4rem; font-weight: 300; color: var(--oro-inyo); margin: 1.5rem 0; font-family: 'Playfair Display', serif; }
+        .card-desc { font-size: 0.85rem; color: #777; margin-bottom: 2rem; font-style: italic; min-height: 50px; }
+        
+        .btn-reserva { display: block; background: var(--oscuro); color: var(--blanco); padding: 1.2rem; text-decoration: none; font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s; text-transform: uppercase; }
+        .btn-reserva:hover { background: var(--oro-inyo); }
+        .card.featured { background: #fdfaf6; border-top-color: var(--oro-inyo); }
 
         /* --- PERFIL BELÉN --- */
-        .perfil-section { background: var(--blanco); padding: 5rem 10%; border-top: 1px solid #eee; }
-        .perfil-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 3rem; max-width: 1100px; margin: 0 auto; }
-        .foto-belen { width: 280px; height: 280px; border-radius: 50%; object-fit: cover; border: 8px solid var(--claro); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .perfil-section { background: var(--blanco); padding: 6rem 10%; border-top: 1px solid #eae6e1; border-b: 1px solid #eae6e1; }
+        .perfil-container { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4rem; max-width: 1000px; margin: 0 auto; }
+        .foto-belen { width: 260px; height: 260px; border-radius: 50%; object-fit: cover; border: 6px solid var(--claro); box-shadow: 0 15px 35px rgba(0,0,0,0.04); grayscale: 20%; }
         .texto-belen { flex: 1; min-width: 300px; text-align: left; }
-        .texto-belen h2 { font-family: 'Playfair Display', serif; color: var(--oro-inyo); margin-bottom: 1rem; }
-        .texto-belen p { font-style: italic; color: #444; }
+        .texto-belen h2 { font-family: 'Playfair Display', serif; color: var(--oscuro); font-size: 2rem; margin-bottom: 1.5rem; font-weight: 400; }
+        .texto-belen p { font-style: italic; color: #555; font-size: 0.95rem; margin-bottom: 1rem; }
 
         /* --- FOOTER ECOSISTEMA --- */
-        footer { background: var(--blanco); color: var(--oscuro); padding: 4rem 10%; text-align: center; border-top: 1px solid #eee; }
-        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: bold; margin-bottom: 40px; font-style: italic; }
-        .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .footer-nav a { text-decoration: none; color: var(--oscuro); border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+        footer { background: var(--blanco); color: var(--oscuro); padding: 5rem 10%; text-align: center; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; margin-bottom: 45px; font-style: italic; text-transform: uppercase; letter-spacing: 2px; }
+        .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: x-12 gap-y-6 font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; max-width: 900px; margin: 0 auto; font-style: italic; }
+        .footer-nav a { text-decoration: none; color: var(--oscuro); border-bottom: 1px solid #e2e0dc; padding-bottom: 6px; transition: all 0.3s; }
         .footer-nav a:hover { color: var(--oro-inyo); border-color: var(--oro-inyo); }
     </style>
 </head>
@@ -99,15 +124,16 @@
     <label id="menu-overlay" for="menu-toggle"></label>
 
     <nav id="side-menu">
-        <label for="menu-toggle" style="position:absolute; top:20px; right:20px; cursor:pointer; color:#ccc;"><i class="fas fa-times"></i></label>
+        <label for="menu-toggle" style="position:absolute; top:24px; right:24px; cursor:pointer; color:#bbb; font-size:1.2rem;"><i class="fas fa-times"></i></label>
         <div class="side-menu-content">
             <p>Espacio INYO ☯️</p>
             <ul class="side-menu-links">
                 <li><a href="https://inyodo.github.io/masaje-japones-/">Masaje Japonés</a></li>
                 <li><a href="https://inyodo.github.io/hiit-calistenia/">HIIT Calistenia</a></li>
                 <li><a href="https://inyodo.github.io/espacio-inyo-web/yoga.html">Clases de Yoga</a></li>
-                <li><a href="#" style="color:var(--oro-inyo); text-decoration: underline;">Coaching Online</a></li>
+                <li><a href="#" style="color:var(--oro-inyo); text-decoration: underline; underline-offset: 6px;">Coaching Online</a></li>
                 <li><a href="https://inyodo.github.io/espacio-inyo-web/zen-stretching.html">Zen Stretching</a></li>
+                <li><a href="https://inyodo.github.io/stretching-belengonzalez/">Stretching</a></li>
                 <li><a href="https://inyodo.github.io/chamanismo/">Chamanismo</a></li>
                 <li><a href="https://inyodo.github.io/Qigong/">Qigong (Salud)</a></li>
                 <li><a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html">Artes Marciales</a></li>
@@ -117,40 +143,83 @@
     </nav>
 
     <header class="hero">
-        <h1>Coaching de Transformación</h1>
-        <p>Alcanza tus metas, genera el cambio</p>
+        <p class="subtitle-top">Acompañamiento Individual 1:1</p>
+        <h1>Volvé a vos</h1>
+        <p class="tagline">Sin culpa. Sin postergarte más.</p>
     </header>
 
     <main class="container">
-        <section class="metodologia">
-            <h2>Metodología de Acompañamiento</h2>
-            <p>Un proceso integral diseñado para alinear tu mente, cuerpo y alma. Utilizamos herramientas de Autoconocimiento, Mindfulness, Yoga, PNL, Ho'ponopono y Gemoterapia.</p>
-            <br>
-            <p><strong>Modalidad:</strong> 100% Online | <strong>Sesiones:</strong> 1 hora | <strong>Horario:</strong> A convenir</p>
+        
+        <section class="manifesto">
+            <h2>Coaching de Transformación para mujeres de 30 a 50 años</h2>
+            <p>Sos la que <strong>resuelve todo</strong>. La que sostiene la casa, el trabajo, la familia. Pero hace tiempo que no te preguntás: <em>¿qué quiero yo?</em></p>
+            <p>Sos la que exige hasta el último detalle para que todo esté “bien”. La que no puede parar porque cree que si frena, todo se cae. La que vive en la rutina del hacer constante y ya no recuerda cómo habitar el ser.</p>
+            
+            <div class="highlight-box">
+                "Sos la que da vueltas en la cama por las noches, pensando en lo que fue, en lo que no fue y en lo que podría pasar..."
+            </div>
+            
+            <p>Si algo de esto te resuena, esta invitación es profundamente para vos. En estas sesiones paramos la rueda durante 60 minutos. Un espacio seguro, sin juicio, donde te acompaño de forma dedicada.</p>
         </section>
 
+        <section class="metodologia">
+            <h3>Juntas vamos a:</h3>
+            <ul>
+                <li><strong>Cortar los patrones que te frenan:</strong> Desarmar de raíz la autoexigencia, la culpa, el miedo a poner límites y la procrastinación.</li>
+                <li><strong>Bajar la ansiedad y el ruido mental:</strong> Mediante respiraciones conscientes, ejercicios prácticos y movimientos simples que podés sostener de manera fluida en tu día a día.</li>
+                <li><strong>Recuperar energía y claridad:</strong> Volver a enfocar tus fuerzas para tus proyectos personales, tu cuerpo y tu bienestar íntimo.</li>
+                <li><strong>Volverte a elegir:</strong> Sin culpa, sin sentirte egoísta. Dándote el permiso absoluto de quererte, habitarte y cuidarte como prioridad.</li>
+            </ul>
+            
+            <div class="highlight-box" style="margin-bottom: 2rem;">
+                <p style="font-size: 0.95rem; margin-bottom:0;"><strong>Un Proceso Personalizado:</strong> Trabajamos con herramientas integrales de Coaching, Mindfulness, PNL, Ho’oponopono, Ley de Atracción y Yoga suave cuando el cuerpo lo pide.</p>
+            </div>
+
+            <div class="meta-info">
+                Modalidad: 100% Online | Encuentros: Cada 15 días aprox. | No necesitás experiencia previa
+            </div>
+        </section>
+
+        <h2 class="section-title">Elegí tu espacio de apertura</h2>
+        
         <div class="grid-precios">
+            
             <div class="card">
-                <h3>1 Sesión Individual</h3>
-                <div class="price">$35.000</div>
-                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.5rem;">Ideal para consultas específicas y claridad inmediata.</p>
-                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20la%20Sesión%20Individual%20de%20$35.000" class="btn-reserva">RESERVAR AHORA</a>
+                <div>
+                    <h4>1 Sesión Individual</h4>
+                    <div class="price">$35.000</div>
+                    <p class="card-desc">Ideal para consultas específicas, toma de decisiones urgentes y claridad inmediata en tu momento actual.</p>
+                </div>
+                <a href="https://wa.me/5491137703316?text=Hola%20Bel%C3%A9n!%20%F0%9F%91%8B%20%C2%BFC%C3%B3mo%20est%C3%A1s%3F%20Por%20favor%2C%20quisiera%20coordinar%20una%20Sesion%20Individual%20de%20Coaching%20de%20Transformacion.%20Entiendo%20que%20el%20valor%20es%20$35.000.%20Muchas%20gracias!" class="btn-reserva">Solicitar Sesión</a>
             </div>
 
-            <div class="card" style="background-color: #fdfaf6;">
-                <h3>Proceso (3 Sesiones)</h3>
-                <div class="price">$90.000</div>
-                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.5rem;">Recomendado para tratar un tema con seguimiento quincenal.</p>
-                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20el%20Proceso%20de%203%20Sesiones%20de%20$90.000" class="btn-reserva">RESERVAR PACK</a>
+            <div class="card featured">
+                <div>
+                    <h4>Proceso Integral (3 Sesiones)</h4>
+                    <div class="price">$90.000</div>
+                    <p class="card-desc">Recomendado para tratar un conflicto o patrón conductual específico con un sólido seguimiento quincenal.</p>
+                </div>
+                <a href="https://wa.me/5491137703316?text=Hola%20Bel%C3%A9n!%20%F0%9F%91%8B%20%C2%BFC%C3%B3mo%20est%C3%A1s%3F%20Por%20favor%2C%20deseo%20iniciar%20el%20Proceso%20Integral%20de%203%20Sesiones%20de%20Coaching.%20Entiendo%20que%20el%20valor%20es%20$90.000.%20Muchas%20gracias!" class="btn-reserva" style="background-color: var(--oro-inyo);">Agendar Proceso</a>
             </div>
 
             <div class="card">
-                <h3>Transformación (5 Sesiones)</h3>
-                <div class="price">$130.000</div>
-                <p style="font-size: 0.85rem; color: #666; margin-bottom: 1.5rem;">Para trabajar a fondo y generar un cambio real y duradero.</p>
-                <a href="https://wa.me/5491137703316?text=Hola%20Belen,%20me%20gustaría%20consultar%20por%20el%20Proceso%20de%20Transformación%20de%205%20Sesiones%20de%20$130.000" class="btn-reserva">RESERVAR PROCESO</a>
+                <div>
+                    <h4>Transformación Profunda (5 S.)</h4>
+                    <div class="price">$130.000</div>
+                    <p class="card-desc">Diseñado para trabajar a fondo tus bloqueos estructurales y generar un cambio verdadero, profundo y duradero.</p>
+                </div>
+                <a href="https://wa.me/5491137703316?text=Hola%20Bel%C3%A9n!%20%F0%9F%91%8B%20%C2%BFC%C3%B3mo%20est%C3%A1s%3F%20Por%20favor%2C%20quisiera%20comprometer-me%20con%20el%20proceso%20de%20Transformaci%C3%B3n%20Profunda%20de%205%20Sesiones.%20El%20valor%20es%20$130.000.%20Muchas%20gracias!" class="btn-reserva">Iniciar Transformación</a>
             </div>
         </div>
+
+        <p style="font-size: 0.9rem; color: var(--stone-600); font-style: italic; max-width: 650px; margin: 0 auto 4rem auto;">
+            Esto no es terapia tradicional, tampoco un curso grabado que queda a medias. Es acompañamiento real, ético y personalizado. Camino con vos hasta que sientas que podés sostenerlo sola.
+        </p>
+        
+        <a href="https://wa.me/5491137703316?text=Hola%20Bel%C3%A9n!%20%F0%9F%91%8B%20%C2%BFC%C3%B3mo%20est%C3%A1s%3F%20Me%20siento%20lista%20para%20dejar%20de%20postergar-me.%20Por%20favor%2C%20quisiera%20agendar%20la%20charla%20inicial%20sin%20compromiso%20para%20conocernos.%20Muchas%20gracias!" class="btn-reserva" style="display:inline-block; max-width:400px; width:100%; padding:1.5rem 1rem; background:#1a1a1a;">
+            <i class="fas fa-comments mr-2"></i> Agendar Charla sin Compromiso
+        </a>
+
     </main>
 
     <section class="perfil-section">
@@ -159,7 +228,6 @@
             <div class="texto-belen">
                 <h2>Soy Be.</h2>
                 <p>Un simple ser que transita, a través de la filosofía yóguica, esta vida. Comparto esta mirada de sabiduría a otros seres que busquen un camino de plena conexión, real y saludable. Expandiendo amor puro desde la profundidad para alcanzar la unidad.</p>
-                <br>
                 <p>¡Invito a tu ser a disfrutar este camino paso a paso!</p>
             </div>
         </div>
@@ -173,12 +241,13 @@
             <a href="https://inyodo.github.io/espacio-inyo-web/yoga.html">Clases de Yoga</a>
             <a href="#">Coaching Online</a>
             <a href="https://inyodo.github.io/espacio-inyo-web/zen-stretching.html">Zen Stretching</a>
+            <a href="https://inyodo.github.io/stretching-belengonzalez/">Stretching</a>
             <a href="https://inyodo.github.io/chamanismo/">Chamanismo</a>
             <a href="https://inyodo.github.io/Qigong/">Qigong (Salud)</a>
             <a href="https://inyodo.github.io/espacio-inyo-web/artes-marciales.html">Artes Marciales</a>
             <a href="https://inyodo.github.io/Acupuntura/index.html">Acupuntura</a>
         </div>
-        <p style="margin-top: 40px; font-size: 10px; color: #999; letter-spacing: 1px; text-transform: uppercase;">© 2026 Espacio INYO - Carlos Tejedor 335, Lanús Oeste Centro</p>
+        <p style="margin-top: 50px; font-size: 10px; color: #a8a29e; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;">© 2026 Espacio INYO - Carlos Tejedor 335, Lanús Oeste Centro</p>
     </footer>
 
 </body>
